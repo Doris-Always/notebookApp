@@ -9,7 +9,7 @@ import java.util.Optional;
 public interface NoteService {
     void createNote(CreateNoteRequest createNoteRequest);
     List<Note> viewAllNote();
-    Optional<Note> viewById(String topic);
+   Note viewById(String id);
     void deleteById(String id);
     void updateNote(CreateNoteRequest createNoteRequest);
 }

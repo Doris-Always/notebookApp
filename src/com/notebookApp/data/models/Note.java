@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 public class Note {
     @Id
     private String noteId;
+
     private String topic;
     private String noteBody;
 

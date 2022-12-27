@@ -28,8 +28,8 @@ public class NoteServiceImpl implements NoteService{
     }
 
     @Override
-    public Optional<Note> viewById(String Id) {
-        return noteRepository.findById(Id);
+    public Note viewById(String id) {
+        return noteRepository.findNoteByNoteId(id);
     }
 
     @Override
