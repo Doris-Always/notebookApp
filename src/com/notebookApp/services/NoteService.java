@@ -11,5 +11,5 @@ public interface NoteService {
     List<Note> viewAllNote();
    Note viewById(String id);
     void deleteById(String id);
-    void updateNote(CreateNoteRequest createNoteRequest);
+    Note updateNote(CreateNoteRequest createNoteRequest);
 }

@@ -19,7 +19,7 @@ public class NoteController {
         noteService.createNote(createNoteRequest);
         return "note created successfully";
     }
-//    @GetMapping("/note/{noteId}")
+
     @RequestMapping(value = "/note/{noteId}", method = RequestMethod.GET)
 
     public Note viewById(@PathVariable String noteId){
@@ -30,5 +30,13 @@ public class NoteController {
     public List<Note> viewAllNote(){
         return noteService.viewAllNote();
     }
-    public void deleteById()
+    @RequestMapping(value = "/note/{noteId}", method = RequestMethod.DELETE)
+    public void deleteNoteById( @PathVariable String noteId){
+        noteService.deleteById(noteId);
+    }
+
+    @RequestMapping(value = "/note/{noteId}", method = RequestMethod.PATCH)
+    public void updateNote(CreateNoteRequest createNoteRequest){
+        noteService.updateNote(createNoteRequest);
+    }
 }
