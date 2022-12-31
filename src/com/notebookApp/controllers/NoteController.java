@@ -1,13 +1,12 @@
 package com.notebookApp.controllers;
 
 import com.notebookApp.data.models.Note;
-import com.notebookApp.dtos.requests.CreateNoteRequest;
+import com.notebookApp.dtos.requests.NoteRequest;
 import com.notebookApp.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class NoteController {
@@ -15,8 +14,8 @@ public class NoteController {
     NoteService noteService;
 
     @PostMapping("/note")
-    public String createNote( @RequestBody CreateNoteRequest createNoteRequest){
-        noteService.createNote(createNoteRequest);
+    public String createNote( @RequestBody NoteRequest noteRequest){
+        noteService.createNote(noteRequest);
         return "note created successfully";
     }
 
@@ -36,7 +35,7 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/note/{noteId}", method = RequestMethod.PATCH)
-    public void updateNote(CreateNoteRequest createNoteRequest){
-        noteService.updateNote(createNoteRequest);
+    public void updateNote(NoteRequest noteRequest){
+        noteService.editNote(noteRequest);
     }
 }
