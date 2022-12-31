@@ -1,6 +1,7 @@
 package com.notebookApp.controllers;
 
 import com.notebookApp.data.models.Note;
+import com.notebookApp.dtos.requests.EditNoteRequest;
 import com.notebookApp.dtos.requests.NoteRequest;
 import com.notebookApp.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class NoteController {
     }
 
     @RequestMapping(value = "/note/{noteId}", method = RequestMethod.PATCH)
-    public void updateNote(NoteRequest noteRequest){
-        noteService.editNote(noteRequest);
+    public Note updateNote(@PathVariable ("noteId")String noteId , @RequestBody EditNoteRequest editNoteResponse){
+       return noteService.editNote(noteId,editNoteResponse);
+
     }
 }

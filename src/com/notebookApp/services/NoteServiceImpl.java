@@ -2,13 +2,13 @@ package com.notebookApp.services;
 
 import com.notebookApp.data.models.Note;
 import com.notebookApp.data.repositories.NoteRepository;
+import com.notebookApp.dtos.requests.EditNoteRequest;
 import com.notebookApp.dtos.requests.NoteRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class NoteServiceImpl implements NoteService {
@@ -42,24 +42,11 @@ public class NoteServiceImpl implements NoteService {
     }
 
     @Override
-    public void editNote(NoteRequest noteRequest) {
-        for (Note note : notes){
-           note.setTopic(noteRequest.getTopic());
-           note.setNoteBody(noteRequest.getNoteBody());
-           noteRepository.save(note);
-        }
-//        Note foundNote = noteRepository.findNoteByNoteId(noteRequest.getNoteId());
-//        foundNote.setTopic(noteRequest.getTopic());
-//        foundNote.setNoteBody(noteRequest.getNoteBody());
-//        return noteRepository.save(foundNote);
-//        if (foundNote.equals(noteRequest.getNoteId())){
-//            foundNote.setTopic(noteRequest.getTopic());
-//        }
-//        if (foundNote.equals(noteRequest.getNoteBody())){
-//            foundNote.setNoteBody(noteRequest.getNoteBody());
-//        }
-//
-//        return noteRepository.save(foundNote);
+    public Note editNote(String id, EditNoteRequest editNoteRequest) {
 
+        Note foundNote = noteRepository.findNoteByNoteId(id);
+        foundNote.setTopic(editNoteRequest.getTopic());
+        foundNote.setNoteBody(editNoteRequest.getNoteBody());
+        return noteRepository.save(foundNote);
     }
 }

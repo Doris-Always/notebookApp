@@ -1,6 +1,7 @@
 package com.notebookApp.services;
 
 import com.notebookApp.data.models.Note;
+import com.notebookApp.dtos.requests.EditNoteRequest;
 import com.notebookApp.dtos.requests.NoteRequest;
 
 import java.util.List;
@@ -10,5 +11,5 @@ public interface NoteService {
     List<Note> viewAllNote();
    Note viewById(String id);
     void deleteById(String id);
-    void editNote(NoteRequest noteRequest);
+    Note editNote(String id, EditNoteRequest editNoteRequest);
 }
