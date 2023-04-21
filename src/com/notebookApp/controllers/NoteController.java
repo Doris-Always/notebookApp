@@ -3,8 +3,10 @@ package com.notebookApp.controllers;
 import com.notebookApp.data.models.Note;
 import com.notebookApp.dtos.requests.EditNoteRequest;
 import com.notebookApp.dtos.requests.NoteRequest;
+import com.notebookApp.dtos.responses.NoteResponse;
 import com.notebookApp.services.NoteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -14,11 +16,6 @@ public class NoteController {
     @Autowired
     NoteService noteService;
 
-    @PostMapping("/note")
-    public String createNote( @RequestBody NoteRequest noteRequest){
-        noteService.createNote(noteRequest);
-        return "note created successfully";
-    }
 
     @RequestMapping(value = "/note/{noteId}", method = RequestMethod.GET)
 
